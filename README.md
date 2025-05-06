@@ -22,6 +22,7 @@ This project showcases how to use the AWS-Auth-Handler package to:
 AWS-Auth-Handler-PlayBook/
 ├── app.py           # Lambda functions listing example
 ├── main.py          # S3 buckets listing example
+├── ai-model.py      # Amazon Bedrock with Claude example
 ├── .env.example     # Example environment variables
 ├── pyproject.toml   # Project configuration
 └── README.md        # This file
@@ -30,10 +31,24 @@ AWS-Auth-Handler-PlayBook/
 ## Setup
 
 1. Clone this repository
-2. Install dependencies:
+2. Install dependencies using one of the following methods:
+
+   Using pip:
    ```bash
    pip install aws-auth-handler
    ```
+
+   Using uv (recommended):
+   ```bash
+   # Install uv if you haven't already
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+
+   # Create virtual environment and install dependencies
+   uv venv
+   source .venv/bin/activate  # On Windows use: .venv\Scripts\activate
+   uv pip install -e .
+   ```
+
 3. Configure AWS credentials:
    - Copy `.env.example` to `.env`
    - Add your AWS credentials to `.env`:
@@ -75,6 +90,29 @@ This will:
   - Function name
   - Memory allocation
   - Last modified date
+
+### Amazon Bedrock with Claude AI
+
+Run the AI model example using Amazon Bedrock:
+
+```bash
+python ai-model.py
+```
+
+This will:
+- Initialize AWS authentication using credentials from `.env`
+- Connect to Amazon Bedrock service
+- Use Claude v2 model to generate responses
+- Demonstrate text generation with configurable parameters:
+  - Temperature
+  - Max tokens
+  - Top K/P sampling
+  - Custom prompts
+
+Requirements:
+- AWS account with Bedrock access enabled
+- Appropriate IAM permissions for Bedrock service
+- Region where Bedrock and Claude model is available (default: us-east-1)
 
 ## Authentication Methods
 

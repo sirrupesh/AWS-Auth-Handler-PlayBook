@@ -4,4 +4,9 @@ version = "0.1.0"
 description = "AWS Auth Handler PlayBook Example"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "aws-auth-handler",
+]
+
+[tool.uv.sources]
+aws-auth-handler = { git = "https://github.com/sirrupesh/AWS-Auth-Handler.git" }
